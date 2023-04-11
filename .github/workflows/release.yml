@@ -46,7 +46,7 @@ jobs:
 
       - name: Build the app
         uses: tauri-apps/tauri-action@v0
-        run: yarn run tauri build
+        # run: yarn run tauri build
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
           TAURI_PRIVATE_KEY: ${{ secrets.TAURI_PRIVATE_KEY }}
