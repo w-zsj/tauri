@@ -1,11 +1,10 @@
-name: Release CI
-
+name: Release
+ 
 on:
   push:
-    # Sequence of patterns matched against refs/tags
     tags:
-      - "v*" # Push events to matching v*, i.e. v1.0, v20.15.10
-
+      - 'v*'
+ 
 jobs:
   release:
     strategy:
@@ -16,51 +15,31 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-
+ 
       - name: Install Node
         uses: actions/setup-node@v1
         with:
           node-version: 16
-
+ 
       - name: Install Rust stable
         uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
-
+ 
       - name: Install Dependencies (ubuntu only)
         if: matrix.platform == 'ubuntu-latest'
         run: |
           sudo apt-get update
           sudo apt-get install -y libgtk-3-dev webkit2gtk-4.0 libappindicator3-dev librsvg2-dev patchelf
-
+ 
       - run: yarn
-
+ 
       - name: Build Tauri
         uses: tauri-apps/tauri-action@v0
         env:
-          GITHUB_TOKEN: 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
-          TAURI_PRIVATE_KEY: dW50cnVzdGVkIGNvbW1lbnQ6IHJzaWduIGVuY3J5cHRlZCBzZWNyZXQga2V5ClJXUlRZMEl5aGx6U3VKS1dXNTlNQWg0WW43a05JSEl4T1FibmsxcnNMamVSMmpEV0lEMEFBQkFBQUFBQUFBQUFBQUlBQUFBQWs4N0FoVllycW52SWJ0RGVHSE1nTkRZNHEvVkNObUVCNkhhTmVzejhtTU1oQmY3Unc2LytJdHd0QlFLY2FiOFY1TGpodGlsaVNYOWJBYkY1QU0xQUQ4bHlQSHh4OEFYMGlqQUZrWHJoRVZaaytuU3RQRnAzRThtU2Nnc1ZibXIrMU53Skx0dzNhMVE9Cg
-          TAURI_KEY_PASSWORD: 111044
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAURI_PRIVATE_KEY: ${{ secrets.TAURI_PRIVATE_KEY }}
+          TAURI_KEY_PASSWORD: ''  TAURI_KEY_PASSWORD: "" # 密钥的加密文本，与seecrts时输入的密码一致即可。如果未输入密码，则此处留空，如果输入了密码，则也需要添加到 secrets 中，然后使用 ${{ secrets.TAURI_PRIVATE_KEY_PASSWORD }} 这种形式
         with:
           tagName: v__VERSION__
           releaseName: v__VERSION__
-       - run:yarn run tauri build
-   
-
-  # 生成静态资源并将其推送到 github pages
-  updater:
-    runs-on: ubuntu-latest
-    needs: release
-    steps:
-      - uses: actions/checkout@v2
-      - run: yarn
-      - run: yarn updater
-        env:
-          GITHUB_TOKEN: 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
-
-      - name: Deploy install.json
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: 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
-          publish_dir: ./updater
-          force_orphan: true
