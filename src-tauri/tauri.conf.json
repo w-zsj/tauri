@@ -27,7 +27,7 @@
         "icons/icon.icns",
         "icons/icon.ico"
       ],
-      "identifier": "com.tauri.build",
+      "identifier": "com.tauri.dev",
       "targets": "all"
      
     },
@@ -37,7 +37,7 @@
     "updater": {
       "active": false,
       "dialog": true,
-      "endpoints": ["https://lencx.github.io/OhMyBox/install.json"],
+      "endpoints": ["https://github.com/w-zsj/tauri/{{target}}/{{arch}}/{{current_version}}"],
       "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDI2N0UzOEU1OTZFQjUyMzQKUldRMFV1dVc1VGgrSmt3ZjJvaVRMV2FBQ3lRMW9BeTAyTTBKMEVSVGZOUXZGdVNuZXBpemhvT2cK"
     },
     "windows": [

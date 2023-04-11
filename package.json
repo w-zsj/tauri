@@ -14,8 +14,10 @@
     "vue": "^3.2.45"
   },
   "devDependencies": {
+    "@actions/github": "^5.1.1",
     "@tauri-apps/cli": "^1.2.3",
     "@vitejs/plugin-vue": "^4.0.0",
+    "node-fetch": "^3.3.1",
     "vite": "^4.2.1"
   }
 }
