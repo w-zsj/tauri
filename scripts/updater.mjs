@@ -6,7 +6,7 @@ import fs from "fs";
 
 // import updatelog from "./updatelog.mjs";
 
-const token = process.env.GITHUB_TOKEN;
+const token = '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';
 
 async function updater() {
   if (!token) {

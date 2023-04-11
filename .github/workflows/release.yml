@@ -38,9 +38,9 @@ jobs:
       - name: Build Tauri
         uses: tauri-apps/tauri-action@v0
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          TAURI_PRIVATE_KEY: ${{ secrets.TAURI_PRIVATE_KEY }}
-          TAURI_KEY_PASSWORD: ${{ secrets.TAURI_KEY_PASSWORD }}
+          GITHUB_TOKEN: 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
+          TAURI_PRIVATE_KEY: dW50cnVzdGVkIGNvbW1lbnQ6IHJzaWduIGVuY3J5cHRlZCBzZWNyZXQga2V5ClJXUlRZMEl5aGx6U3VKS1dXNTlNQWg0WW43a05JSEl4T1FibmsxcnNMamVSMmpEV0lEMEFBQkFBQUFBQUFBQUFBQUlBQUFBQWs4N0FoVllycW52SWJ0RGVHSE1nTkRZNHEvVkNObUVCNkhhTmVzejhtTU1oQmY3Unc2LytJdHd0QlFLY2FiOFY1TGpodGlsaVNYOWJBYkY1QU0xQUQ4bHlQSHh4OEFYMGlqQUZrWHJoRVZaaytuU3RQRnAzRThtU2Nnc1ZibXIrMU53Skx0dzNhMVE9Cg
+          TAURI_KEY_PASSWORD: 111044
         with:
           tagName: v__VERSION__
           releaseName: v__VERSION__
@@ -56,11 +56,11 @@ jobs:
       - run: yarn
       - run: yarn updater
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: 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
 
       - name: Deploy install.json
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: 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
           publish_dir: ./updater
           force_orphan: true
