@@ -7,7 +7,8 @@ on:
     # 匹配特定标签 (refs/tags)
     tags:
       - "v*" # 推送事件匹配 v*, 例如 v1.0，v20.15.10 等来触发工作流
-
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
 # 需要运行的作业组合
 jobs:
   # 任务：创建 release 版本
