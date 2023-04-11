@@ -49,6 +49,6 @@ jobs:
           node-version: 16
       - run: yarn
       - name: Create Update
-        run: yarn update
+        run: yarn run tauri build
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
