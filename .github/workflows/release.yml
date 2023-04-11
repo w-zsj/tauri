@@ -58,7 +58,7 @@ jobs:
       # 安装 Rust
       - name: Install Rust stable
         uses: actions-rs/toolchain@v1
-        with:`
+        with:
           toolchain: stable
 
       # 使用 Rust 缓存，加快安装速度
