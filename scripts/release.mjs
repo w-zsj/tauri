@@ -26,18 +26,17 @@ async function release() {
     console.log(`Invalid flag "${flag}"`);
     process.exit(1);
   }
-
   const nextVersion = `${a}.${b}.${c}`;
   packageJson.version = nextVersion;
 
   const nextTag = `v${nextVersion}`;
-  await updatelog(nextTag, 'release');
+//   await updatelog(nextTag, 'release');
 
   // 将新版本写入 package.json 文件
   fs.writeFileSync('./package.json', JSON.stringify(packageJson, null, 2));
 
   // 提交修改的文件，打 tag 标签（tag 标签是为了触发 github action 工作流）并推送到远程
-  execSync('git add ./package.json ./UPDATE_LOG.md');
+  execSync('git add .');
   execSync(`git commit -m "v${nextVersion}"`);
   execSync(`git tag -a v${nextVersion} -m "v${nextVersion}"`);
   execSync(`git push`);

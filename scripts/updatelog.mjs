@@ -20,6 +20,7 @@ export default function updatelog(tag, type = 'updater') {
   const content = fs.readFileSync(file, { encoding: 'utf8' }).split('\n');
 
   content.forEach((line, index) => {
+   
     if (reTag.test(line)) {
       _tag = line.slice(3).trim();
       if (!tagMap[_tag]) {
@@ -34,7 +35,7 @@ export default function updatelog(tag, type = 'updater') {
       _tag = null;
     }
   });
-
+  console.log('line',tagMap,tag);
   if (!tagMap?.[tag]) {
     console.log(
       `${type === 'release' ? '[UPDATE_LOG.md] ' : ''}Tag ${tag} does not exist`
