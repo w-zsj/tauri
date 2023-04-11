@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - develop
+  pull_request:
+    paths:
+      - '.github/workflows/learn-github-actions.yml'
 jobs:
   check-bats-version:
     runs-on: ubuntu-latest
