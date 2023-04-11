@@ -30,7 +30,7 @@ async function release() {
   packageJson.version = nextVersion;
 
   const nextTag = `v${nextVersion}`;
-//   await updatelog(nextTag, 'release');
+  await updatelog(nextTag, 'release');
 
   // 将新版本写入 package.json 文件
   fs.writeFileSync('./package.json', JSON.stringify(packageJson, null, 2));
